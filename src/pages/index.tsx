@@ -9,14 +9,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
-import LoginIcon from '@mui/icons-material/Login';
-import Fingerprint from '@mui/icons-material/Fingerprint';
-import IconButton from '@mui/material/IconButton';
+import LoginIcon from "@mui/icons-material/Login";
+import Fingerprint from "@mui/icons-material/Fingerprint";
+import IconButton from "@mui/material/IconButton";
 import { Settings } from "@mui/icons-material";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -53,7 +53,9 @@ function index() {
             >
               Ultimate Blog App
             </Typography>
-            <Button variant="contained" color="success">Login</Button>
+            <Button variant="contained" color="success">
+              Login
+            </Button>
           </Toolbar>
         </AppBar>
         <Grid container spacing={5}>
@@ -65,9 +67,12 @@ function index() {
               voluptatum doloribus optio a maxime qui aliquid at!
             </Item>
             <Item>
-              <Typography variant="h1">
-                h1 tag
-              </Typography>
+              <Typography variant="h1">h1 tag</Typography>
+            </Item>
+            <Item>
+            <Button variant="outlined" color="success">
+              Success
+            </Button>
             </Item>
           </Grid>
           <Grid item xs={8}>
@@ -80,11 +85,19 @@ function index() {
             <Item>xs=4</Item>
           </Grid>
           <Grid item xs={8}>
-            <Item>xs=8
-            <IconButton aria-label="fingerprint" color="secondary">
-        <Fingerprint />
-      </IconButton>
-              <Button startIcon={<Settings/>} variant="outlined" color="secondary" size="small">Cotained</Button>
+            <Item>
+              xs=8
+              <IconButton aria-label="fingerprint" color="secondary">
+                <Fingerprint />
+              </IconButton>
+              <Button
+                startIcon={<Settings />}
+                variant="outlined"
+                color="secondary"
+                size="small"
+              >
+                Cotained
+              </Button>
             </Item>
           </Grid>
         </Grid>
