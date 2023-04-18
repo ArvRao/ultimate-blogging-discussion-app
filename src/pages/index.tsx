@@ -10,19 +10,12 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { styled } from '@mui/material/styles';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
-import MuiAccordionSummary, {
-  AccordionSummaryProps,
-} from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import CustomizedAccordions from "./Components/AccordianFaqs";
 
 import "@fontsource/roboto/300.css";
@@ -43,6 +36,13 @@ interface Props {
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Blog","Contact"];
 
+const menuItems = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/Contact' },
+  { label: 'Blog', path: '/' },
+];
+
 const bull = (
   <Box
     component="span"
@@ -53,46 +53,9 @@ const bull = (
 );
 
 
-
 const handleClick = (item: any) => {
   console.log("got clicked", item)
 }
-
-const Accordion = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  '&:not(:last-child)': {
-    borderBottom: 0,
-  },
-  '&:before': {
-    display: 'none',
-  },
-}));
-
-const AccordionSummary = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-    {...props}
-  />
-))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(90deg)',
-  },
-  '& .MuiAccordionSummary-content': {
-    marginLeft: theme.spacing(1),
-  },
-}));
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
-}));
 
 const responsivePaper = {
   border: "1px solid gray",
@@ -101,12 +64,6 @@ const responsivePaper = {
 }
 
 export default function Index(props: Props) {
-  const [expanded, setExpanded] = React.useState<string | false>('panel1');
-
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-      setExpanded(newExpanded ? panel : false);
-    };
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -124,15 +81,6 @@ window !== undefined ? () => window().document.body : undefined;
         MUI
       </Typography>
       <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Box>
   );
 
@@ -159,21 +107,24 @@ window !== undefined ? () => window().document.body : undefined;
           <Typography
             variant="h3"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "PersoByte", sm: "block" } }}
+            sx={{ pl: 20, flexGrow: 1, display: { sm:"none", xs: "none", md: "block"} }}
             align="center"
           >
             InsiderStack
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} onClick={() => {
-                handleClick(item)
-              }} sx={{ color: "#fff" }}>
-                {item}
-                <Link href="/HomePage"></Link>
-              </Button>
-            ))}
-          </Box>
+      <List sx={{ display: 'flex', justifyContent: 'center' }}>
+        {menuItems.map((menuItem) => (
+          <Link href={menuItem.path} key={menuItem.label} target="_blank">
+            <ListItem button>
+              <ListItemText
+                primary={menuItem.label}
+                sx={{ px: 1 }}
+              />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+    
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -196,10 +147,10 @@ window !== undefined ? () => window().document.body : undefined;
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3, flexGrow: 1 }} className="bg-gray-100">
+      <Box component="main" sx={{ p: 5, flexGrow: 1, pt: 5 }} className="bg-gray-100">
         <Toolbar />
         <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+          Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Similique
           unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus
           quibusdam, aliquam dolore excepturi quae. Distinctio enim at eligendi
           perferendis in cum quibusdam sed quae, accusantium et aperiam? Quod
@@ -234,44 +185,48 @@ window !== undefined ? () => window().document.body : undefined;
           rem repellendus. Voluptates perspiciatis, in pariatur impedit, nam
           facilis libero dolorem dolores sunt inventore perferendis, aut
           sapiente modi nesciunt.
-        </Typography>{" "}
+        </Typography>
         <br />
         <Divider />
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-          style={{ minHeight: "40vh" }}
-        >
-          <Card sx={{ minWidth: 1000 }}>
+        
+        <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      height={{ xs: '100%', md: '30vh' }}
+      // bgcolor={{ xs: '#f2f', md: '#fa5' }}
+      sx={{
+        p:3
+      }}
+    >
+      {/* <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, blanditiis commodi exercitationem explicabo reprehenderit sequi sint necessitatibus, quis vitae dolores dolore. Aliquid expedita ipsa architecto ab accusantium a voluptatum beatae.</div> */}
+      <Card>
             <CardContent>
               <Typography
-                className="bg-blue-200"
-                sx={{ fontSize: 14 }}
+                variant="h5"
                 color="text.secondary"
                 gutterBottom
               >
-                What is this about?
+                What is it about?
               </Typography>
-              <Typography variant="h5" component="div">
-                All personalized for YOUR NEEDS
+              <Typography variant="h6" component="div">
+                It is an online platform that help enables users to post blogs, videos, images. We help you get connected with various discussions you might be interested in.
               </Typography>
-              <Typography variant="body2">
+              {/* <Typography variant="body2">
                 This is more than just an online blog posting platform.
                 <br />
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <h1 className="title rounded-lg bg-slate-400 p-3">
-                <Link href="/HomePage" target="_blank">
+              </Typography> */}
+              <Typography className="p-5">
+            <Link href="/HomePage" target="_blank">
                   Get started here
                 </Link>
-              </h1>
-            </CardActions>
-          </Card>
-        </Grid>
+              </Typography>
+            </CardContent>
+            </Card>
+    </Box>
+      
+      {/* </Box> */}
+      
         <Divider />
         <Typography className="p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum consequuntur commodi nulla, unde accusantium. Aperiam eaque laboriosam cumque quae ducimus eum, tempora commodi eveniet. Animi perspiciatis est ex omnis.</Typography> <br /><br />
         <Divider />
@@ -327,6 +282,9 @@ window !== undefined ? () => window().document.body : undefined;
             </Grid>
             </Paper>
           <Paper sx={responsivePaper}><CustomizedAccordions /></Paper>
+          <Divider />
+        
     </Box>
+
   );
 }
