@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import CustomizedAccordions from "./Components/AccordianFaqs";
 
 import "@fontsource/roboto/300.css";
@@ -23,8 +23,6 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { style } from "@mui/system";
-import { Image } from "@mui/icons-material";
-import { blue } from "@mui/material/colors";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -34,13 +32,12 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Blog","Contact"];
 
 const menuItems = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Contact', path: '/Contact' },
-  { label: 'Blog', path: '/' },
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "/Contact" },
+  { label: "Blog", path: "/" },
 ];
 
 const bull = (
@@ -52,16 +49,11 @@ const bull = (
   </Box>
 );
 
-
-const handleClick = (item: any) => {
-  console.log("got clicked", item)
-}
-
 const responsivePaper = {
   border: "1px solid gray",
   margin: 1,
-  flex: { xs: "100%", sm: "calc(50%-20px)", md: "calc(33%-20px)" }
-}
+  flex: { xs: "100%", sm: "calc(50%-20px)", md: "calc(33%-20px)" },
+};
 
 export default function Index(props: Props) {
   const { window } = props;
@@ -72,8 +64,7 @@ export default function Index(props: Props) {
   };
 
   const container =
-window !== undefined ? () => window().document.body : undefined;
-
+    window !== undefined ? () => window().document.body : undefined;
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -83,8 +74,6 @@ window !== undefined ? () => window().document.body : undefined;
       <Divider />
     </Box>
   );
-
-    
 
   return (
     <Box>
@@ -107,24 +96,24 @@ window !== undefined ? () => window().document.body : undefined;
           <Typography
             variant="h3"
             component="div"
-            sx={{ pl: 20, flexGrow: 1, display: { sm:"none", xs: "none", md: "block"} }}
+            sx={{
+              pl: 20,
+              flexGrow: 1,
+              display: { sm: "none", xs: "none", md: "block" },
+            }}
             align="center"
           >
-            InsiderStack
+            <Link href="/">InsiderStack</Link>
           </Typography>
-      <List sx={{ display: 'flex', justifyContent: 'center' }}>
-        {menuItems.map((menuItem) => (
-          <Link href={menuItem.path} key={menuItem.label} target="_blank">
-            <ListItem button>
-              <ListItemText
-                primary={menuItem.label}
-                sx={{ px: 1 }}
-              />
-            </ListItem>
-          </Link>
-        ))}
-      </List>
-    
+          <List sx={{ display: "flex", justifyContent: "center" }}>
+            {menuItems.map((menuItem) => (
+              <Link href={menuItem.path} key={menuItem.label} target="_blank">
+                <ListItem button>
+                  <ListItemText primary={menuItem.label} sx={{ px: 1 }} />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -147,7 +136,11 @@ window !== undefined ? () => window().document.body : undefined;
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 5, flexGrow: 1, pt: 5 }} className="bg-gray-100">
+      <Box
+        component="main"
+        sx={{ p: 5, flexGrow: 1, pt: 5 }}
+        className="bg-gray-100"
+      >
         <Toolbar />
         <Typography>
           Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Similique
@@ -188,103 +181,111 @@ window !== undefined ? () => window().document.body : undefined;
         </Typography>
         <br />
         <Divider />
-        
         <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height={{ xs: '100%', md: '30vh' }}
-      // bgcolor={{ xs: '#f2f', md: '#fa5' }}
-      sx={{
-        p:3
-      }}
-    >
-      {/* <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, blanditiis commodi exercitationem explicabo reprehenderit sequi sint necessitatibus, quis vitae dolores dolore. Aliquid expedita ipsa architecto ab accusantium a voluptatum beatae.</div> */}
-      <Card>
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height={{ xs: "100%", md: "30vh" }}
+          // bgcolor={{ xs: '#f2f', md: '#fa5' }}
+          sx={{
+            p: 3,
+          }}
+        >
+          {/* <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, blanditiis commodi exercitationem explicabo reprehenderit sequi sint necessitatibus, quis vitae dolores dolore. Aliquid expedita ipsa architecto ab accusantium a voluptatum beatae.</div> */}
+          <Card>
             <CardContent>
-              <Typography
-                variant="h5"
-                color="text.secondary"
-                gutterBottom
-              >
+              <Typography variant="h5" color="text.secondary" gutterBottom>
                 What is it about?
               </Typography>
               <Typography variant="h6" component="div">
-                It is an online platform that help enables users to post blogs, videos, images. We help you get connected with various discussions you might be interested in.
+                It is an online platform that help enables users to post blogs,
+                videos, images. We help you get connected with various
+                discussions you might be interested in.
               </Typography>
               {/* <Typography variant="body2">
                 This is more than just an online blog posting platform.
                 <br />
               </Typography> */}
               <Typography className="p-5">
-            <Link href="/HomePage" target="_blank">
+                <Link href="/HomePage" target="_blank">
                   Get started here
                 </Link>
               </Typography>
             </CardContent>
-            </Card>
-    </Box>
-      
-      {/* </Box> */}
-      
+          </Card>
+        </Box>
+        {/* </Box> */}
         <Divider />
-        <Typography className="p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum consequuntur commodi nulla, unde accusantium. Aperiam eaque laboriosam cumque quae ducimus eum, tempora commodi eveniet. Animi perspiciatis est ex omnis.</Typography> <br /><br />
+        <Typography className="p-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum
+          consequuntur commodi nulla, unde accusantium. Aperiam eaque laboriosam
+          cumque quae ducimus eum, tempora commodi eveniet. Animi perspiciatis
+          est ex omnis.
+        </Typography>{" "}
+        <br />
+        <br />
         <Divider />
-        <Box >
-          
-      <Divider />
-    </Box>
-    <Box
-  sx={{
-    justifyContent: "center",
-    alignItems: "center",
-    height: "50vh",
-    p:2,  
-    backgroundColor: 'primary.dark',
-    border: '1px dashed grey',
-    // p: 3
-    width: {
-      xs: 400,
-      sm: 600,
-      md: 900,
-      lg: 1300,
-      xl: 1600,
-      alignContent: "center"
-    },
-  }}
->
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. A magni at vel laboriosam necessitatibus recusandae. Voluptatum aliquid aspernatur nemo iste facilis est assumenda tenetur eos officiis, ab sunt, iusto ipsa.
-  1234
-</Box>
-<br />
-<Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height={{ xs: '100%', md: '30vh' }}
-      bgcolor={{ xs: '#f2f', md: '#fa5' }}
-      sx={{
-        p:3
-      }}
-    >
-      <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, blanditiis commodi exercitationem explicabo reprehenderit sequi sint necessitatibus, quis vitae dolores dolore. Aliquid expedita ipsa architecto ab accusantium a voluptatum beatae.</div>
-    </Box>
-      
+        <Box>
+          <Divider />
+        </Box>
+        <Box
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: "50vh",
+            p: 2,
+            backgroundColor: "primary.dark",
+            border: "1px dashed grey",
+            // p: 3
+            width: {
+              xs: 400,
+              sm: 600,
+              md: 900,
+              lg: 1300,
+              xl: 1600,
+              alignContent: "center",
+            },
+          }}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. A magni at
+          vel laboriosam necessitatibus recusandae. Voluptatum aliquid
+          aspernatur nemo iste facilis est assumenda tenetur eos officiis, ab
+          sunt, iusto ipsa. 1234
+        </Box>
+        <br />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          // height={{ xs: '100%', md: '30vh' }}
+          bgcolor={{ xs: "#f2f", md: "#fa5" }}
+          sx={{
+            p: 3,
+          }}
+        >
+          <Typography variant="h6" component="div">
+            Join our weekly newsletter. We cover and all the latest news and
+            trending and fun stuff here. <br />
+            No spams promise!
+          </Typography>
+        </Box>
       </Box>
-      
+
       <Divider />
       {/* <Footer /> */}
       <Divider />
       {/* accordian for faqs */}
-      <Paper sx={{ flexWrap:"wrap", direction:"row" }}>
-            <Grid item xs={12} sm={12} md={6} lg={1}>
-            <Typography className="p-5" variant="h4" component="div">FAQs</Typography>
-            </Grid>
-            </Paper>
-          <Paper sx={responsivePaper}><CustomizedAccordions /></Paper>
-          <Divider />
-        
+      <Paper sx={{ flexWrap: "wrap", direction: "row" }}>
+        <Grid item xs={12} sm={12} md={6} lg={1}>
+          <Typography className="p-5" variant="h4" component="div">
+            FAQs
+          </Typography>
+        </Grid>
+      </Paper>
+      <Paper sx={responsivePaper}>
+        <CustomizedAccordions />
+      </Paper>
+      <Divider />
     </Box>
-
   );
 }

@@ -1,91 +1,100 @@
-import React from "react";
-import { IoReorderThreeOutline } from "react-icons/io5";
-import { BsBell } from "react-icons/bs";
-import { FiEdit } from "react-icons/fi";
-import { CiSearch } from "react-icons/ci";
-import { HiChevronDown } from "react-icons/hi";
+import * as React from "react";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Link from "next/link";
+import Box from "@mui/material/Box";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
+import { AppBar, Toolbar, IconButton, List } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { ListItem, ListItemText, Divider } from "@mui/material";
 
-const HomePage = () => {
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+  height: 310,
+  lineHeight: "60px",
+}));
+
+const darkTheme = createTheme({ palette: { mode: "dark" } });
+// const lightTheme = createTheme({ palette: { mode: 'light' } });
+
+export default function Elevation() {
+  const menuItems = [
+    { label: "Recent posts", path: "/" },
+    { label: "My blogs", path: "/about" },
+    { label: "My discussions", path: "/Contact" },
+    { label: "Profile", path: "/" },
+  ];
+
   return (
-    // take flex in direction of colums. Total of 3 columns -> header, body and footer
-    <div className="flex h-screen w-full flex-col">
-      <header className="flex h-20 w-full flex-row items-center justify-around border-b-[1px] border-gray-300 bg-white">
-        <div>
-          <IoReorderThreeOutline className="text-2xl text-gray-600" />
-        </div>
-        <div className="text-2xl font-thin">Blog & diary</div>
-        <div className="flex items-center space-x-4">
-          <div>
-            <BsBell className="text-2xl text-gray-600" />
-          </div>
-          <div>
-            <div className="h-5 w-5 rounded-full bg-gray-600" />
-          </div>
-          <div>
-            <button className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 transition hover:border-gray-900 hover:text-gray-900">
-              <div>Write</div>
-              <div>
-                <FiEdit />
-              </div>
-            </button>
-          </div>
-        </div>
-      </header>
-      <section className="grid h-full w-full grid-cols-12 place-items-center">
-        <main className="col-span-8 h-full w-full border-r border-gray-300">
-          <div className="flex w-full flex-col space-y-4 border-gray py-10 px-2">
-            <div className="flex w-full items-center space-x-4">
-              <label
-                htmlFor="search"
-                className="relative w-full rounded-3xl border border-gray-800"
-              >
-                <div className="absolute left-3 flex h-full items-center">
-                  <CiSearch />
-                </div>
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  className="rounded-3xl py-1 px-4 pl-7 text-sm outline-none placeholder:text-xs placeholder:text-gray-300"
-                  placeholder="Search..."
-                />
-              </label>
-              <div className="flex w-full items-center justify-end space-x-4">
-                <div>My topics:</div>
-                <div className="flex items-center">
-                  {Array.from({ length: 4 }).map((_, i) => (
-                    <div
-                      className="rounded-3xl bg-gray-200/50 px-4 py-3"
-                      key={i}
-                    >
-                      tag {i}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex w-full items-center justify-between">
-              <div>Articles</div>
-              <div>
-                <button className="flex items-center space-x-2 rounded-3xl border border-gray-800 px-3 py-2 font-semibold text-sm">
-                  <div>Following</div>
-                  {/* <div>Ads</div> */}
-                  <div>
-                    <HiChevronDown className="text-xl"/>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div></div>
-        </main>
-        <aside className="col-span-4 h-full w-full">From the side part</aside>
-      </section>
-      <footer className="flex h-20 w-full flex-row items-center justify-around border-b-[1px] border-gray-300 bg-white">
-        All copyrights reserved &copy;
-      </footer>
-    </div>
-  );
-};
+    <Box>
+      <AppBar component="nav" className="bg-blue-500">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{
+              pl: 30,
+              flexGrow: 1,
+              display: { sm: "none", xs: "none", md: "block" },
+            }}
+            align="center"
+          >
+            <Link href="/">InsiderStack</Link>
+          </Typography>
+          <List sx={{ display: "flex", justifyContent: "center" }}>
+            {menuItems.map((menuItem) => (
+              <Link href={menuItem.path} key={menuItem.label} target="_blank">
+                <ListItem button>
+                  <ListItemText primary={menuItem.label} sx={{ px: 1 }} />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+        </Toolbar>
+      </AppBar>
 
-export default HomePage;
+      <Divider />
+      <br />
+      <br />
+
+      <Grid container spacing={1}>
+        <Box
+          sx={{
+            p: 4,
+            bgcolor: "#dadae0",
+            display: "grid",
+            gap: 2,
+          }}
+        >
+          <Typography variant="h6" component="div">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat,
+            soluta officia sunt iusto dolores unde provident assumenda
+            voluptatem quas nobis accusamus veniam consectetur optio nisi
+            voluptate, libero maiores cupiditate incidunt?
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={2}>
+              <Box>
+                <Item>xs=4</Item>
+              </Box>
+            </Grid>
+            <Grid item xs={10}>
+              <Item>xs=8</Item>
+            </Grid>
+          </Grid>
+        </Box>
+      </Grid>
+    </Box>
+  );
+}
