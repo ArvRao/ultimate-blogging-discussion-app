@@ -3,11 +3,40 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Link from "next/link";
 import Box from "@mui/material/Box";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import { AppBar, Toolbar, IconButton, List } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { ListItem, ListItemText, Divider } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import { alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -17,8 +46,23 @@ const Item = styled(Paper)(({ theme }) => ({
   lineHeight: "60px",
 }));
 
-const darkTheme = createTheme({ palette: { mode: "dark" } });
-// const lightTheme = createTheme({ palette: { mode: 'light' } });
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 1),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '35ch',
+      '&:focus': {
+        width: '30ch',
+      },
+    },
+  },
+}));
 
 export default function Elevation() {
   const menuItems = [
@@ -68,33 +112,48 @@ export default function Elevation() {
       <br />
       <br />
 
-      <Grid container spacing={1}>
+      <Grid container>
         <Box
           sx={{
-            p: 4,
+            paddingTop: 3,
             bgcolor: "#dadae0",
             display: "grid",
-            gap: 2,
+            // gap: 2,
           }}
         >
-          <Typography variant="h6" component="div">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat,
-            soluta officia sunt iusto dolores unde provident assumenda
-            voluptatem quas nobis accusamus veniam consectetur optio nisi
-            voluptate, libero maiores cupiditate incidunt?
+          <Toolbar>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search anything here"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+          </Toolbar>
+          <Typography variant="h6" component="div" style={{textAlign:'center'}}>
+            All the main stuff like the blogs and discussions happen here
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={2}>
               <Box>
-                <Item>xs=4</Item>
+                <Item>Google ads(maybe)</Item>
               </Box>
             </Grid>
-            <Grid item xs={10}>
-              <Item>xs=8</Item>
+            <Grid item xs={8}>
+              <Item>xs=10
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit vel eaque ab, ullam ex voluptatem, inventore veritatis enim beatae est temporibus, exercitationem recusandae sit fuga officiis pariatur repellat rem nostrum.
+              </Item>
             </Grid>
-          </Grid>
-        </Box>
+          <Grid item xs={2}>
+              <Box>
+                <Item>Google ads(maybe)</Item>
+              </Box>
+            </Grid>
       </Grid>
+        </Box>
+          </Grid>
     </Box>
   );
 }
