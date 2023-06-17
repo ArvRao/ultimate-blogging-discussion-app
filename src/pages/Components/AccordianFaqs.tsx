@@ -60,10 +60,8 @@ export default function CustomizedAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            It is an online platform to write blogs and have discussions with various groups you`re interested in! <br />
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+            It is an online platform to write blogs and have discussions about various topics you`re interested in! <br />
+            You can also maintain a personalized diary. It`s accessible only to YOU
           </Typography>
         </AccordionDetails>
       </Accordion>

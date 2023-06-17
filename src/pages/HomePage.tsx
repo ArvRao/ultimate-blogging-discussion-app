@@ -72,7 +72,7 @@ export default function Elevation() {
 
   return (
     <Box>
-      <AppBar component="nav" className="bg-blue-500">
+      <AppBar component="nav" className="bg-gradient-to-r from-cyan-500 to-blue-500">
         <Toolbar>
           <IconButton
             color="inherit"
