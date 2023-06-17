@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.homePage{
+    background: linear-gradient(to right, rgba(238, 239, 240,100), rgba(210,214,217,100));
+    /* color: white; */
+}

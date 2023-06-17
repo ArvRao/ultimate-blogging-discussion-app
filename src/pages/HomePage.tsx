@@ -110,11 +110,12 @@ export default function Elevation() {
       <br />
       <br />
 
-      <Grid container>
+      <Grid container className="homePage">
         <Box
           sx={{
             paddingTop: 2,
-            bgcolor: "#dadae0",
+            padding: 2,
+            // bgcolor: "#7cc7d6",
             display: "grid",
             // gap: 2,
           }}
@@ -138,27 +139,9 @@ export default function Elevation() {
             All the main stuff like the blogs and discussions happen here
           </Typography>
           <br />
-          <Grid container spacing={1}>
-            <Grid
-              item
-              xs={2}
-              className="sticky top-20 col-span-4 flex h-[90vh] flex-col p-3"
-            >
-              <Box>
-                <Search className="rounded-full bg-blue-100">
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search anything here"
-                    inputProps={{ "aria-label": "search" }}
-                  />
-                </Search>
-                <Typography variant="h5">Google ads(maybe)</Typography>
-              </Box>
-            </Grid>
+          <Grid container spacing={2}>
             <Divider orientation="vertical"></Divider>
-            <Grid item xs={7}>
+            <Grid item xs={8}>
               <Box>
                 <div className="p-5">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -299,7 +282,7 @@ export default function Elevation() {
               </Box>
             </Grid>
             <Divider orientation="vertical"></Divider>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <Box className="sticky top-20 col-span-4 flex h-[90vh] flex-col p-3">
                 <center>
                   <div className="p-2">
@@ -308,7 +291,7 @@ export default function Elevation() {
                     </Typography>
                     {Array.from({ length: 4 }).map((_, i) => (
                       <div key={i}>
-                        <div className="text-2xl font-bold text-gray-800 decoration-indigo-600 group-hover:underline">
+                        <div className="text-1xl text-gray-800 decoration-indigo-600 group-hover:underline">
                           Person {i + 1} profile
                           <Button className="rounded-full pl-7">
                             Follow
@@ -318,10 +301,13 @@ export default function Elevation() {
                       </div>
                     ))}
                   </div>
-                  <Typography variant="h5">Google ads(maybe)</Typography>
                   <div>
                     <Typography variant="h4" component="div" className="p-1">
+                      <Box sx={{
+                        paddingTop: 2,
+                      }}>
                       My bookmarks{" "}
+                      </Box>
                     </Typography>
                     {Array.from({ length: 4 }).map((_, i) => (
                       <div key={i}>
