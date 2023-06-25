@@ -4,19 +4,13 @@ import Link from "next/link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Card, CardActions, CardContent, Grid, Paper } from "@mui/material";
+import { Card, CardContent, Grid, Paper } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
 import CustomizedAccordions from "./Components/AccordianFaqs";
+import Header from "~/components/layouts/Header";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -32,22 +26,6 @@ interface Props {
 }
 
 const drawerWidth = 240;
-
-const menuItems = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Contact", path: "/Contact" },
-  { label: "Blog", path: "/" },
-];
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
 
 const responsivePaper = {
   border: "1px solid gray",
@@ -82,7 +60,7 @@ export default function Index(props: Props) {
         <title>InsiderStack</title>
       </Head>
       <CssBaseline />
-      <AppBar component="nav" className="bg-blue-500">
+      {/* <AppBar component="nav" className="bg-gradient-to-r from-cyan-600 to-blue-500">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -115,7 +93,8 @@ export default function Index(props: Props) {
             ))}
           </List>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
+      <Header />
       <Box component="nav">
         <Drawer
           container={container}

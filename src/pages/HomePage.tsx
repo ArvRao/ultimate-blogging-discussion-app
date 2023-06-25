@@ -11,6 +11,7 @@ import { ListItem, ListItemText, Divider } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import Header from '../components/layouts/Header'
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -72,40 +73,7 @@ export default function Elevation() {
 
   return (
     <Box>
-      <AppBar component="nav" className="bg-gradient-to-r from-cyan-500 to-blue-500">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h3"
-            component="div"
-            sx={{
-              pl: 30,
-              flexGrow: 1,
-              display: { sm: "none", xs: "none", md: "block" },
-            }}
-            align="center"
-          >
-            <Link href="/">InsiderStack</Link>
-          </Typography>
-          <List sx={{ display: "flex", justifyContent: "center" }}>
-            {menuItems.map((menuItem) => (
-              <Link href={menuItem.path} key={menuItem.label} target="_blank">
-                <ListItem button>
-                  <ListItemText primary={menuItem.label} sx={{ px: 1 }} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-        </Toolbar>
-      </AppBar>
-
+      <Header />
       <Divider />
       <br />
       <br />
